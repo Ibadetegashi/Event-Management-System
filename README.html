@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+</head>
+
+<body>
+    <article>
+        <h1>Event-Management-System</h1>
+
+        <h2>Description</h2>
+        <p>
+            This is an Event Management System designed to streamline the process of creating, managing, and
+            participating in events.
+            The system enables users to create events, register for events, and view event details along with a list of
+            registered participants.
+        </p>
+
+        <h2>Installation</h2>
+        <ol>
+            <li>Clone the repository:</li>
+            <code>git clone https://github.com/Ibadetegashi/Event-Management-System.git</code>
+
+            <li>Install dependencies:</li>
+            <code>npm install</code>
+        </ol>
+
+        <h2>Configuration</h2>
+        <p>
+            Create a .env file in the project root. Add the following configurations to the .env file:
+        </p>
+        <h2>Configuration</h2>
+        <p>
+            1. Create a .env file in the project root.<br>
+            2. Add the following configurations to the .env file:
+        </p>
+        <ul>
+            <li>DATABASE_URL="": Connection URL for the MySQL database.</li>
+            <li>EMAIL="": Email address used for sending emails.</li>
+            <li>PASSWORD="": Password associated with the email address (please handle securely).
+                Use a Unique App-Specific
+                Password. Instead of using your primary email account password, generate a unique app-specific password
+                specifically for sending emails through this application.</li>
+            <li>PORT="": Port number on which the application will run.</li>
+        </ul>
+
+        <h3>With Cloudinary</h3>
+        <ul>
+            <li>CLOUDINARY_CLOUD_NAME="": Cloudinary Cloud Name</li>
+            <li>CLOUDINARY_API_KEY="": Cloudinary API Key</li>
+            <li>CLOUDINARY_API_SECRET="": Cloudinary API Secret</li>
+        </ul>
+
+        <h3>Without Cloudinary</h3>
+        <p>
+            If you prefer not to use Cloudinary and want to use local file upload, follow these steps:
+        </p>
+        <ol>
+            <li>Open middlewares/upload.js and replace with uploads/Upload.txt</li>
+            <li>Open controllers/event.js and replace with uploads/event.txt</li>
+        </ol>
+
+        <h2>Prisma</h2>
+        <ol>
+            <li>DATABASE_URL="mysql://username:password@localhost:3306/database_name"</li>
+            <p>Replace username, password, localhost, 3306, and database_name with your actual database credentials and
+                configuration.</p>
+            <li>Apply Migrations: <code>npx prisma migrate dev</code></li>
+            <p>This command will execute the migrations defined in the prisma/migrations folder. It sets up the database
+                schema based on the changes specified in each migration file.</p>
+            <li>Generate Prisma Client: <code>npx prisma generate</code></li>
+            <p>This command generates the Prisma Client based on the schema.prisma file.</p>
+        </ol>
+
+        <h2>Usage</h2>
+        <p>
+            To start the application, run:
+        </p>
+        <code>npm start</code>
+        <p>Access the application at http://localhost:PORT, where PORT is specified in server.js.</p>
+
+        <h2>API Documentation</h2>
+
+        <h3>Event Management Endpoints (`event.js`):</h3>
+        <ul>
+            <li><span style="color: green">[POST]</span> `/event/`: Create a new event.</li>
+            <li><span style="color:blue;">[PUT]</span> `/event/:id`: Update an existing event.</li>
+            <li><span style="color:red;">[DELETE]</span> `/event/:id`: Delete an event.</li>
+            <li><span style="color:#1034a6;">[GET]</span> `/event/`: Get a list of all events.</li>
+            <li><span style="color:lightblue;">[GET]</span> `/event/:id`: Get details of a specific event.</li>
+            <li><span style="color:#b284be;">[GET]</span> `/event/participant/:participantId`: Get events for a specific
+                participant.</li>
+            <li><span style="color:#28e;">[GET]</span> `/event/search?date=2024-09-30&name=power up&location=prizren`:
+                Search
+                for an event</li>
+        </ul>
+
+        <h3>Participant Management Endpoints (`participant.js`):</h3>
+        <ul>
+            <li><span style="color:green;">[POST]</span> `/participant/`: Register a new participant.</li>
+            <li><span style="color:blue;">[PUT]</span> `/participant/:id`: Update an existing participant.</li>
+            <li><span style="color:red;">[DELETE]</span> `/participant/:id`: Delete a participant.</li>
+            <li><span style="color:#1034a6;">[GET]</span> `/participant/`: Get a list of all participants.</li>
+            <li><span style="color:lightblue;">[GET]</span> `/participant/:id`: Get details of a specific participant.
+            </li>
+            <li><span style="color:#b284be;">[GET]</span> `/participant/event/:eventId`: Get participants registered for
+                a
+                specific event.</li>
+        </ul>
+        <h2>LICENSE</h2>
+        <p>This project is licensed under the MIT License.</p>
+    </article>
+</body>
+
+</html>

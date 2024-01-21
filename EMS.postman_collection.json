@@ -1,0 +1,401 @@
+{
+	"info": {
+		"_postman_id": "0087c31b-51fe-4137-a685-d5db29ef0360",
+		"name": "EMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31765247"
+	},
+	"item": [
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "createEvent",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Power Up",
+									"type": "text"
+								},
+								{
+									"key": "startTime",
+									"value": "2024-09-30T19:30:00",
+									"type": "text"
+								},
+								{
+									"key": "endTime",
+									"value": "2024-09-30T22:00:00",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Prizren",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "An evening of spoken word and poetry readings.",
+									"type": "text"
+								},
+								{
+									"key": "availableSeats",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "registrationDeadline",
+									"value": "2024-10-30T22:00:00",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/ibade/Downloads/behance.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteEvent",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/event/21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"event",
+								"21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllEvents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/event/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"event",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEventsById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/event/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"event",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editEvent",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Event Edit 13 edit",
+									"type": "text"
+								},
+								{
+									"key": "startTime",
+									"value": "2024-09-30T19:30:00Z",
+									"type": "text"
+								},
+								{
+									"key": "endTime",
+									"value": "2024-09-30T22:00:00Z",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Cozy Bookstore Lounge",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "An evening of spoken word and poetry readings.",
+									"type": "text"
+								},
+								{
+									"key": "availableSeats",
+									"value": "14",
+									"type": "text"
+								},
+								{
+									"key": "registrationDeadline",
+									"value": "2026-09-15T23:59:59Z",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/ibade/Downloads/fb0febb2c1a9a25a007f993f42513cd1.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/event/24",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"event",
+								"24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEventsByParticipant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/event/participant/22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"event",
+								"participant",
+								"22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchEvent",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/event/search?name=mother&location=Prizren&date=2024-09-30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"event",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "mother"
+								},
+								{
+									"key": "location",
+									"value": "Prizren"
+								},
+								{
+									"key": "date",
+									"value": "2024-09-30"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Participant",
+			"item": [
+				{
+					"name": "registerParticipant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstname\": \"Ibadete\",\r\n  \"lastname\": \"Gashi\",\r\n  \"email\": \"ibadetegashi15@gmail.com\",\r\n  \"eventId\": 26\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/participant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"participant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllParticipants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/participant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"participant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getParticipantById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/participant/18",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"participant",
+								"18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editParticipant",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"firstname\": \"Ibadete\",\r\n  \"lastname\": \"Gashi\",\r\n  \"email\": \"ibadetegashi@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/participant/22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"participant",
+								"22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteParticipant",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/participant/21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"participant",
+								"21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getParticipantsByEvent",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/participant/event/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"participant",
+								"event",
+								"13"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

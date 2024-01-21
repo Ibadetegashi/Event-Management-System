@@ -1,0 +1,50 @@
+
+# Upload without cloudinary 1. (middlewares/upload.js)
+ 
+ const multer = require('multer');
+
+const allowedMimetype = [
+  'image/png', 'image/jpg', 'image/jpeg',
+];
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    if (allowedMimetype.includes(file.mimetype)) {
+      return cb(null, 'uploads');
+    }
+    const error = new Error('Invalid file type');
+    error.code = 'UNEXPECTED_FILE';
+    cb(error);
+  },
+  filename: (req, file, cb) => {
+    const fileName = file.originalname.replace(' ', '.');
+    cb(null, `${Date.now()}--${fileName} `);
+  },
+});
+
+const upload = multer({
+  storage,
+  limits: {
+    fileSize: 1024 * 1024, // 1MB
+    files: 1,
+  },
+}).single('image');
+
+const uploading = (req, res, next) => {
+  upload(req, res, (err) => {
+    if (err) {
+      console.log(err);
+      if (err.code === 'UNEXPECTED_FILE') {
+        return res.status(400).json({ error: err.message });
+      } if (err.code === 'LIMIT_FILE_SIZE') {
+        return res.status(400).json({ error: `File size is too large. Maximum is 1MB ${err.message}` });
+      } if (err.code === 'LIMIT_FILE_COUNT') {
+        return res.status(400).json({ error: `${err.message}` });
+      }
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+    next();
+  });
+};
+
+module.exports = uploading;
+

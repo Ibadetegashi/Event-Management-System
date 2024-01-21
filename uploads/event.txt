@@ -1,0 +1,68 @@
+
+#Replace createEvent and editEvent in this file -> (controllers/event.js) with this below
+
+const createEvent = async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).send('Image is required');
+    }
+    const { availableSeats, ...otherData } = req.body;
+    const imageUrl = `http://localhost:3000/uploads/${req.file.filename}`;
+
+    const event = await prisma.event.create({
+      data: {
+        image: imageUrl,
+        availableSeats: parseInt(availableSeats),
+        ...otherData,
+      },
+      include: {
+        participants: true,
+      },
+    });
+    if (!event) {
+      return res.status(400).send({ error: 'Could not create the event' });
+    }
+
+    return res.status(201).send(event);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send('Internal Server Error');
+  }
+};
+
+const editEvent = async (req, res) => {
+  const id = parseInt(req.params.id);
+  try {
+    const findEvent = await prisma.event.findUnique({
+      where: { id },
+    });
+    if (!findEvent) {
+      return res.status(404).json({ message: 'Event not found' });
+    }
+
+    const { availableSeats, ...otherData } = req.body;
+
+    const image = req.file
+      ? `http://localhost:3000/uploads/${req.file.filename}`
+      : findEvent.image;
+
+    const event = await prisma.event.update({
+      where: { id },
+      include: { participants: true },
+      data: {
+        image,
+        availableSeats: parseInt(availableSeats),
+        ...otherData,
+      },
+    });
+    if (!event) {
+      return res
+        .status(400)
+        .send({ error: 'Cannot find an Event with this id' });
+    }
+    return res.status(200).send(event);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send('Internal Server Error');
+  }
+};
