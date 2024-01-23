@@ -19,12 +19,12 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Power Up",
+									"value": "Poetry Day 3",
 									"type": "text"
 								},
 								{
 									"key": "startTime",
-									"value": "2024-09-30T19:30:00",
+									"value": "2025-09-30T19:30:00",
 									"type": "text"
 								},
 								{
@@ -39,12 +39,12 @@
 								},
 								{
 									"key": "description",
-									"value": "An evening of spoken word and poetry readings.",
+									"value": "An evening for mothers.",
 									"type": "text"
 								},
 								{
 									"key": "availableSeats",
-									"value": "4",
+									"value": "70",
 									"type": "text"
 								},
 								{
@@ -55,7 +55,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/ibade/Downloads/behance.png"
+									"src": "/C:/Users/ibade/Music/OneDrive/Pictures/Saved Pictures/Screenshots/Screenshot 2024-01-11 193051.png"
 								}
 							]
 						},
@@ -79,7 +79,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/event/21",
+							"raw": "http://localhost:3000/event/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -87,7 +87,7 @@
 							"port": "3000",
 							"path": [
 								"event",
-								"21"
+								"1"
 							]
 						}
 					},
@@ -95,9 +95,21 @@
 				},
 				{
 					"name": "getAllEvents",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:3000/event/",
 							"protocol": "http",
@@ -119,7 +131,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/event/13",
+							"raw": "http://localhost:3000/event/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -127,7 +139,7 @@
 							"port": "3000",
 							"path": [
 								"event",
-								"13"
+								"1"
 							]
 						}
 					},
@@ -143,7 +155,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Event Edit 13 edit",
+									"value": "Mother Day edit",
 									"type": "text"
 								},
 								{
@@ -179,12 +191,12 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/ibade/Downloads/fb0febb2c1a9a25a007f993f42513cd1.jpg"
+									"src": []
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/event/24",
+							"raw": "http://localhost:3000/event/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -192,7 +204,7 @@
 							"port": "3000",
 							"path": [
 								"event",
-								"24"
+								"2"
 							]
 						}
 					},
@@ -225,7 +237,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/event/search?name=mother&location=Prizren&date=2024-09-30",
+							"raw": "http://localhost:3000/event/search?name=y&location=Prizren&date=2025-09-30",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -238,7 +250,7 @@
 							"query": [
 								{
 									"key": "name",
-									"value": "mother"
+									"value": "y"
 								},
 								{
 									"key": "location",
@@ -246,7 +258,7 @@
 								},
 								{
 									"key": "date",
-									"value": "2024-09-30"
+									"value": "2025-09-30"
 								}
 							]
 						}
@@ -265,7 +277,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"firstname\": \"Ibadete\",\r\n  \"lastname\": \"Gashi\",\r\n  \"email\": \"ibadetegashi15@gmail.com\",\r\n  \"eventId\": 26\r\n}\r\n",
+							"raw": "{\r\n  \"firstname\": \"Ibadete\",\r\n  \"lastname\": \"Gashi\",\r\n  \"email\": \"ig47496@bt-uni.net\",\r\n  \"eventId\": 3\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -311,7 +323,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/participant/18",
+							"raw": "http://localhost:3000/participant/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -319,7 +331,7 @@
 							"port": "3000",
 							"path": [
 								"participant",
-								"18"
+								"3"
 							]
 						}
 					},
@@ -332,7 +344,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"firstname\": \"Ibadete\",\r\n  \"lastname\": \"Gashi\",\r\n  \"email\": \"ibadetegashi@gmail.com\"\r\n}",
+							"raw": "{\r\n   \"firstname\": \"Ibadete\",\r\n  \"lastname\": \"Gashi\"\r\n \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -340,7 +352,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/participant/22",
+							"raw": "http://localhost:3000/participant/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -348,7 +360,7 @@
 							"port": "3000",
 							"path": [
 								"participant",
-								"22"
+								"1"
 							]
 						}
 					},
@@ -360,7 +372,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/participant/21",
+							"raw": "http://localhost:3000/participant/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -368,7 +380,7 @@
 							"port": "3000",
 							"path": [
 								"participant",
-								"21"
+								"1"
 							]
 						}
 					},
@@ -380,7 +392,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/participant/event/13",
+							"raw": "http://localhost:3000/participant/event/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -389,7 +401,37 @@
 							"path": [
 								"participant",
 								"event",
-								"13"
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeParticipantFromEvent",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"eventId\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/participant/remove/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"participant",
+								"remove",
+								"3"
 							]
 						}
 					},

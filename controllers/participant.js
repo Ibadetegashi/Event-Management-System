@@ -221,6 +221,7 @@ const removeParticipantFromSpecificEvent = async (req, res) => {
     if (!findParticipant) {
       return res.status(404).send({ message: "The Participant not found" });
     }
+    
     //disconnect that participant from that event
     const updateEvent = await prisma.event.update({
       where: { id: eventId },
@@ -231,6 +232,22 @@ const removeParticipantFromSpecificEvent = async (req, res) => {
         participants: true,
       },
     });
+
+    //delete that participant if it has no other events (if so, after disconnect has 0 events)
+    const participant = await prisma.participant.findUnique({
+      where: { id: participantId },
+      include: {
+        events:true
+      }
+    });
+
+    console.log('participan after disconnect', participant);
+
+    if (participant.events.length === 0) { 
+      await prisma.participant.delete({
+        where:{id: participantId}
+      })
+    }
 
     return res.status(200).send(updateEvent);
   } catch (error) {
