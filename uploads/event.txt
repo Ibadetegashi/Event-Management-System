@@ -11,9 +11,9 @@ const createEvent = async (req, res) => {
 
     const event = await prisma.event.create({
       data: {
+        ...otherData,
         image: imageUrl,
         availableSeats: parseInt(availableSeats),
-        ...otherData,
       },
       include: {
         participants: true,
@@ -50,9 +50,9 @@ const editEvent = async (req, res) => {
       where: { id },
       include: { participants: true },
       data: {
+        ...otherData,
         image,
         availableSeats: parseInt(availableSeats),
-        ...otherData,
       },
     });
     if (!event) {

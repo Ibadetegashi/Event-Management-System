@@ -6,6 +6,7 @@ const {
   getParticipantsByEvent,
   editParticipant,
   deleteParticipant,
+  removeParticipantFromSpecificEvent,
 } = require('../controllers/participant');
 
 const {
@@ -28,6 +29,7 @@ router.put(
   editParticipant,
 );
 router.get('/', getAllParticipants);
+router.put('/remove/:participantId', removeParticipantFromSpecificEvent)
 router.get('/:id', getParticipantById);
 router.get('/event/:eventId', getParticipantsByEvent);
 router.delete('/:id', deleteParticipant);

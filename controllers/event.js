@@ -4,20 +4,20 @@ const prisma = new PrismaClient();
 
 const createEvent = async (req, res) => {
   try {
-    
+
     if (!req.file) {
-      return res.status(400).send({error:'Image is required'});
+      return res.status(400).send({ error: 'Image is required' });
     }
 
     const { availableSeats, ...otherData } = req.body;
-    const imageUrl = req.cloudinaryUrl 
+    const imageUrl = req.cloudinaryUrl
     console.log(req.cloudinaryUrl);
 
     const event = await prisma.event.create({
       data: {
-        image: imageUrl,
         availableSeats: parseInt(availableSeats),
         ...otherData,
+        image: imageUrl,
       },
       include: {
         participants: true,
@@ -44,8 +44,7 @@ const editEvent = async (req, res) => {
       return res.status(404).json({ message: 'Event not found' });
     }
 
-    const {
-      availableSeats, ...otherData } = req.body;
+    const { availableSeats, ...otherData } = req.body;
 
     const image = req.file
       ? req.cloudinaryUrl
@@ -73,7 +72,7 @@ const editEvent = async (req, res) => {
   }
 };
 
-// delete event also its participant only if those participant has only one event
+// delete event also its participants only if those participants has only one event
 const deleteEvent = async (req, res) => {
   const id = parseInt(req.params.id);
   try {
@@ -116,6 +115,7 @@ const deleteEvent = async (req, res) => {
         participants: true,
       },
     });
+
     return res.status(200).send({ deleteEvent, otherEvents });
   } catch (error) {
     console.log(error);
@@ -173,9 +173,7 @@ const getEventsByParticipant = async (req, res) => {
       },
     });
     if (!events || events.length === 0) {
-      return res
-        .status(404)
-        .send({ message: 'Participant not found' });
+      return res.status(404).send({ message: 'Participant not found' });
     }
 
     return res.status(200).send(events);
@@ -208,6 +206,7 @@ const searchEvent = async (req, res) => {
         ]
       }
     })
+    
     console.log(events);
     return res.status(200).send(events)
   } catch (error) {

@@ -7,9 +7,9 @@
 ## Table of Contents
 
 - [Installation](#installation)
-- [Usage](#usage)
 - [Configuration](#configuration)
 - [Prisma](#prisma)
+- [Usage](#usage)
 - [API Documentation](#api-documentation)
   - [Event Management Endpoints](#event-management-endpoints-eventjs)
   - [Participant Management Endpoints](#participant-management-endpoints-participantjs)
@@ -63,25 +63,27 @@ To start the application, run:
 
 ## Event Management Endpoints (`event.js`):
 
-- <span style="color:green;">**POST**</span> `/event/`: Create a new event.
-- <span style="color:orange;">**PUT**</span> `/event/:id`: Update an existing event.
-- <span style="color:red;">**DELETE**</span> `/event/:id`: Delete an event.
-- <span style="color: #1034a6;">**GET**</span> `/event/`: Get a list of all events.
-- <span style="color:lightblue;">**GET**</span> `/event/:id`: Get details of a specific event.
-- <span style="color:#b284be;">**GET**</span> `/event/participant/:participantId`: Get events for a specific participant.
-- <span style="color:#b28e;">**GET**</span> `/event/search?date=2024-09-30&name=power up&location=prizren`
+- ${\color{orange}POST}$ `/event/`: Create a new event.
+- ${\color{blue}PUT}$ `/event/:id`: Update an existing event.
+- ${\color{red}DELETE}$  `/event/:id`: Delete an event.
+- ${\color{green}GET}$ `/event/`: Get a list of all events.
+- ${\color{green}GET}$  `/event/:id`: Get details of a specific event.
+- ${\color{green}GET}$  `/event/participant/:participantId`: Get events for a specific participant.
+- ${\color{green}GET}$ `/event/search?date=2024-09-30&name=power up&location=prizren`
 `/event/search?date=2024-09-30&name=power up`
 `/event/search?date=2024-09-30`
 `/event/search?`  : Search for an event
 
 ## Participant Management Endpoints (`participant.js`):
 
-- <span style="color:green;">**POST**</span> `/participant/`: Register a new participant.
-- <span style="color:orange;">**PUT**</span> `/participant/:id`: Update an existing participant.
-- <span style="color:red;">**DELETE**</span> `/participant/:id`: Delete a participant.
-- <span style="color: #1034a6;">**GET**</span> `/participant/`: Get a list of all participants.
-- <span style="color:lightblue;">**GET**</span> `/participant/:id`: Get details of a specific participant.
-- <span style="color:#b284be;">**GET**</span> `/participant/event/:eventId`: Get participants registered for a specific event.
+- ${\color{orange}POST}$ `/participant/`: Register a new participant.
+- ${\color{blue}PUT}$ `/participant/:id`: Update an existing participant.
+- ${\color{lightblue}PUT}$ `/participant/remove/:participantId`: Remove participant for a specific event.
+- ${\color{red}DELETE}$  `/participant/:id`: Delete a participant.
+- ${\color{green}GET}$ `/participant/`: Get a list of all participants.
+- ${\color{green}GET}$  `/participant/:id`: Get details of a specific participant.
+- ${\color{green}GET}$ `/participant/event/:eventId`: Get participants registered for a specific event.
+
 
 
 

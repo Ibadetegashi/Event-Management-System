@@ -1,7 +1,7 @@
-const { PrismaClient } = require('@prisma/client');
+const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
-const sendEmailConfirm = require('../utils/sendEmailConfirm');
+const sendEmailConfirm = require("../utils/sendEmailConfirm");
 
 const participantRegister = async (req, res) => {
   try {
@@ -13,11 +13,11 @@ const participantRegister = async (req, res) => {
     });
 
     if (!eventToParticipate) {
-      return res.status(401).send({ error: 'Event not found' });
+      return res.status(401).send({ error: "Event not found" });
     }
     // check if registration is closed
     if (eventToParticipate.registrationDeadline <= Date.now()) {
-      return res.status(403).send('Registration is closed');
+      return res.status(403).send("Registration is closed");
     }
     // Checking if the user already registered for this event
     const existingUser = eventToParticipate.participants.find(
@@ -25,14 +25,12 @@ const participantRegister = async (req, res) => {
     );
 
     if (existingUser) {
-      return res.status(409).json({ error: 'You have already registered' });
+      return res.status(409).json({ error: "You are already registered" });
     }
 
     // check for available seats
     if (eventToParticipate.availableSeats === 0) {
-      return res
-        .status(400)
-        .send({ error: 'No more spots available for this event' });
+      return res.status(400).send({ error: "No more spots available for this event" });
     }
     // check if participant with this email exists in participant table
     const participantExists = await prisma.participant.findUnique({
@@ -61,9 +59,7 @@ const participantRegister = async (req, res) => {
     }
 
     if (!participant) {
-      return res
-        .status(404)
-        .send({ message: 'Failed to register participant' });
+      return res.status(404).send({ message: "Failed to register participant" });
     }
 
     // decrease the seats by one
@@ -79,7 +75,7 @@ const participantRegister = async (req, res) => {
     return res.status(201).send({ participant, eventToParticipateUpdated });
   } catch (error) {
     console.log(error);
-    return res.status(500).send('Internal Server Error');
+    return res.status(500).send("Internal Server Error");
   }
 };
 
@@ -90,14 +86,12 @@ const getAllParticipants = async (req, res) => {
       include: { events: true },
     });
     if (!participants || participants.length === 0) {
-      return res
-        .status(404)
-        .send({ message: 'There are no registered participants' });
+      return res.status(404).send({ message: "There are no registered participants" });
     }
     return res.status(200).send(participants);
   } catch (error) {
     console.log(error);
-    return res.status(500).send('Internal Server Error');
+    return res.status(500).send("Internal Server Error");
   }
 };
 
@@ -111,14 +105,12 @@ const getParticipantById = async (req, res) => {
       },
     });
     if (!participant) {
-      return res
-        .status(404)
-        .send({ message: 'The participant was not found' });
+      return res.status(404).send({ message: "The participant was not found" });
     }
     return res.status(200).send(participant);
   } catch (error) {
     console.log(error);
-    return res.status(500).send('Internal Server Error');
+    return res.status(500).send("Internal Server Error");
   }
 };
 
@@ -129,7 +121,7 @@ const getParticipantsByEvent = async (req, res) => {
       where: { id: eventId },
     });
     if (!findEvent) {
-      return res.status(404).json({ message: 'This event does not exist.' });
+      return res.status(404).json({ message: "This event does not exist." });
     }
 
     const participants = await prisma.participant.findMany({
@@ -140,15 +132,13 @@ const getParticipantsByEvent = async (req, res) => {
       },
     });
     if (!participants || participants.length === 0) {
-      return res
-        .status(404)
-        .send({ message: 'No one is registered for this event ' });
+      return res.status(404).send({ message: "No one is registered for this event " });
     }
 
     return res.status(200).send(participants);
   } catch (error) {
     console.log(error);
-    return res.status(500).send('Internal Server Error');
+    return res.status(500).send("Internal Server Error");
   }
 };
 
@@ -159,9 +149,7 @@ const editParticipant = async (req, res) => {
       where: { id },
     });
     if (!findParticipant) {
-      return res
-        .status(404)
-        .send({ message: 'The participant does not exists' });
+      return res.status(404).send({ message: "The participant does not exists" });
     }
 
     const updateParticipant = await prisma.participant.update({
@@ -169,14 +157,12 @@ const editParticipant = async (req, res) => {
       data: req.body,
     });
     if (!updateParticipant) {
-      return res
-        .status(400)
-        .send({ error: 'Failed to update this participant' });
+      return res.status(400).send({ error: "Failed to update this participant" });
     }
     return res.status(200).send(updateParticipant);
   } catch (error) {
     console.log(error);
-    return res.status(500).send('Internal Server Error');
+    return res.status(500).send("Internal Server Error");
   }
 };
 
@@ -188,7 +174,7 @@ const deleteParticipant = async (req, res) => {
     });
 
     if (!findParticipant) {
-      return res.status(404).send({ message: 'Participant not found!' });
+      return res.status(404).send({ message: "Participant not found!" });
     }
 
     const deleteParticipant = await prisma.participant.delete({
@@ -196,9 +182,7 @@ const deleteParticipant = async (req, res) => {
     });
 
     if (!deleteParticipant) {
-      return res
-        .status(400)
-        .send({ error: 'Failed to delete the participant' });
+      return res.status(400).send({ error: "Failed to delete the participant" });
     }
 
     const otherParticipant = await prisma.participant.findMany();
@@ -206,7 +190,52 @@ const deleteParticipant = async (req, res) => {
     return res.status(200).send({ deleteParticipant, otherParticipant });
   } catch (error) {
     console.log(error);
-    return res.status(500).send('Internal Server Error');
+    return res.status(500).send("Internal Server Error");
+  }
+};
+
+const removeParticipantFromSpecificEvent = async (req, res) => {
+  try {
+    const participantId = parseInt(req.params.participantId);
+    const eventId = parseInt(req.body.eventId);
+    //check if event exists
+    const findEvent = await prisma.event.findUnique({
+      where: { id: eventId },
+      include: { participants: true },
+    });
+    if (!findEvent) {
+      return res.status(404).send({ message: "The Event not found." });
+    }
+    //check if participant exists in this event
+    const findParticipant = await prisma.participant.findUnique({
+      where: {
+        id: participantId,
+        events: {
+            some: {
+              id: eventId
+            },
+        },
+      },
+    });
+
+    if (!findParticipant) {
+      return res.status(404).send({ message: "The Participant not found" });
+    }
+    //disconnect that participant from that event
+    const updateEvent = await prisma.event.update({
+      where: { id: eventId },
+      data: {
+        participants: { disconnect: { id: participantId } },
+      },
+      include: {
+        participants: true,
+      },
+    });
+
+    return res.status(200).send(updateEvent);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Internal Server Error");
   }
 };
 
@@ -217,4 +246,5 @@ module.exports = {
   getParticipantsByEvent,
   editParticipant,
   deleteParticipant,
+  removeParticipantFromSpecificEvent,
 };

@@ -86,28 +86,31 @@
 
         <h3>Event Management Endpoints (`event.js`):</h3>
         <ul>
-            <li><span style="color: green">[POST]</span> `/event/`: Create a new event.</li>
+            <li><span style="color: orange">[POST]</span> `/event/`: Create a new event.</li>
             <li><span style="color:blue;">[PUT]</span> `/event/:id`: Update an existing event.</li>
             <li><span style="color:red;">[DELETE]</span> `/event/:id`: Delete an event.</li>
-            <li><span style="color:#1034a6;">[GET]</span> `/event/`: Get a list of all events.</li>
-            <li><span style="color:lightblue;">[GET]</span> `/event/:id`: Get details of a specific event.</li>
-            <li><span style="color:#b284be;">[GET]</span> `/event/participant/:participantId`: Get events for a specific
+            <li><span style="color:green;">[GET]</span> `/event/`: Get a list of all events.</li>
+            <li><span style="color:green;">[GET]</span> `/event/:id`: Get details of a specific event.</li>
+            <li><span style="color:green;">[GET]</span> `/event/participant/:participantId`: Get events for a specific
                 participant.</li>
-            <li><span style="color:#28e;">[GET]</span> `/event/search?date=2024-09-30&name=power up&location=prizren`:
+            <li><span style="color:green;">[GET]</span> `/event/search?date=2024-09-30&name=power up&location=prizren`:
                 Search
                 for an event</li>
         </ul>
 
         <h3>Participant Management Endpoints (`participant.js`):</h3>
         <ul>
-            <li><span style="color:green;">[POST]</span> `/participant/`: Register a new participant.</li>
+            <li><span style="color:orange;">[POST]</span> `/participant/`: Register a new participant.</li>
             <li><span style="color:blue;">[PUT]</span> `/participant/:id`: Update an existing participant.</li>
-            <li><span style="color:red;">[DELETE]</span> `/participant/:id`: Delete a participant.</li>
-            <li><span style="color:#1034a6;">[GET]</span> `/participant/`: Get a list of all participants.</li>
-            <li><span style="color:lightblue;">[GET]</span> `/participant/:id`: Get details of a specific participant.
+            <li><span style="color:blue;">[PUT]</span> `/participant/remove/:participantId`: Remove participant from a
+                specific
+                event.
             </li>
-            <li><span style="color:#b284be;">[GET]</span> `/participant/event/:eventId`: Get participants registered for
-                a
+            <li><span style="color:red;">[DELETE]</span> `/participant/:id`: Delete a participant.</li>
+            <li><span style="color:green;">[GET]</span> `/participant/`: Get a list of all participants.</li>
+            <li><span style="color:green;">[GET]</span> `/participant/:id`: Get details of a specific participant.
+            </li>
+            <li><span style="color:green;">[GET]</span> `/participant/event/:eventId`: Get participants registered for a
                 specific event.</li>
         </ul>
         <h2>LICENSE</h2>
