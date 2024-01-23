@@ -78,7 +78,7 @@ To start the application, run:
 
 - ${\color{orange}POST}$ `/participant/`: Register a new participant.
 - ${\color{blue}PUT}$ `/participant/:id`: Update an existing participant.
-- ${\color{lightblue}PUT}$ `/participant/remove/:participantId`: Remove participant for a specific event.
+- ${\color{lightblue}PUT}$ `/participant/remove/:participantId`: Remove participant from a specific event.
 - ${\color{red}DELETE}$  `/participant/:id`: Delete a participant.
 - ${\color{green}GET}$ `/participant/`: Get a list of all participants.
 - ${\color{green}GET}$  `/participant/:id`: Get details of a specific participant.
