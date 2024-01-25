@@ -55,23 +55,118 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/ibade/Music/OneDrive/Pictures/Saved Pictures/Screenshots/Screenshot 2024-01-11 193051.png"
+									"src": "/C:/Users/ibade/Downloads/fb0febb2c1a9a25a007f993f42513cd1.jpg"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/event",
-							"protocol": "http",
+							"raw": "{{url}}/event",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"event"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "createEventExample",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Poetry Day 3",
+											"type": "text"
+										},
+										{
+											"key": "startTime",
+											"value": "2025-09-30T19:30:00",
+											"type": "text"
+										},
+										{
+											"key": "endTime",
+											"value": "2024-09-30T22:00:00",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "Prizren",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "An evening for mothers.",
+											"type": "text"
+										},
+										{
+											"key": "availableSeats",
+											"value": "70",
+											"type": "text"
+										},
+										{
+											"key": "registrationDeadline",
+											"value": "2024-10-30T22:00:00",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/ibade/Downloads/fb0febb2c1a9a25a007f993f42513cd1.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/event",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"event"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "417"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a1-E5CyI271WI/ToSO+DPjdAY+MOjs\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Jan 2024 19:14:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 36,\n    \"name\": \"Poetry Day 3\",\n    \"startTime\": \"2025-09-30T17:30:00.000Z\",\n    \"endTime\": \"2024-09-30T20:00:00.000Z\",\n    \"location\": \"Prizren\",\n    \"description\": \"An evening for mothers.\",\n    \"availableSeats\": 70,\n    \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n    \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1706210070/ems/pknygsqpkuyukxzvfkvh.jpg\",\n    \"createdAt\": \"2024-01-25T19:14:32.303Z\",\n    \"updatedAt\": \"2024-01-25T19:14:32.303Z\"\n}"
+						}
+					]
 				},
 				{
 					"name": "deleteEvent",
@@ -79,19 +174,70 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/event/1",
-							"protocol": "http",
+							"raw": "{{url}}/event/36",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"event",
-								"1"
+								"36"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "deleteEventExample",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/event/36",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"event",
+										"36"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "451"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c3-VtS4rtzw1XJNvfeUCvUY/kFrpYY\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Jan 2024 19:14:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"deleteEvent\": {\n        \"id\": 36,\n        \"name\": \"Poetry Day 3\",\n        \"startTime\": \"2025-09-30T17:30:00.000Z\",\n        \"endTime\": \"2024-09-30T20:00:00.000Z\",\n        \"location\": \"Prizren\",\n        \"description\": \"An evening for mothers.\",\n        \"availableSeats\": 70,\n        \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n        \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1706210070/ems/pknygsqpkuyukxzvfkvh.jpg\",\n        \"createdAt\": \"2024-01-25T19:14:32.303Z\",\n        \"updatedAt\": \"2024-01-25T19:14:32.303Z\",\n        \"participants\": []\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "getAllEvents",
@@ -111,39 +257,150 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/event/",
-							"protocol": "http",
+							"raw": "{{url}}/event/",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"event",
 								""
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getAllEventsExample",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/event/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"event",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "6293"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1895-UUkhO6NPt2wgvJImnSFTq/namsc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Jan 2024 19:15:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 15,\n        \"name\": \"Poetry Day \",\n        \"startTime\": \"2024-09-30T19:30:00.000Z\",\n        \"endTime\": \"2024-09-30T22:00:00.000Z\",\n        \"location\": \"Prishtina\",\n        \"description\": \"An evening of spoken word and poetry readings.\",\n        \"availableSeats\": 3,\n        \"registrationDeadline\": \"2025-09-15T23:59:59.000Z\",\n        \"image\": \"image path\",\n        \"createdAt\": \"2024-01-20T16:02:53.561Z\",\n        \"updatedAt\": \"2024-01-20T16:03:32.564Z\"\n    },\n    {\n        \"id\": 16,\n        \"name\": \"Music Festival\",\n        \"startTime\": \"2024-09-30T19:30:00.000Z\",\n        \"endTime\": \"2024-09-30T22:00:00.000Z\",\n        \"location\": \"Gjakova\",\n        \"description\": \"An evening of spoken word and poetry readings.\",\n        \"availableSeats\": 3,\n        \"registrationDeadline\": \"2025-09-15T23:59:59.000Z\",\n        \"image\": \"http://localhost:3000/uploads/1705773403589--orderPage.png\",\n        \"createdAt\": \"2024-01-20T17:56:43.699Z\",\n        \"updatedAt\": \"2024-01-20T20:12:31.613Z\"\n    },\n    {\n        \"id\": 17,\n        \"name\": \"Doku Fest\",\n        \"startTime\": \"2024-09-30T19:30:00.000Z\",\n        \"endTime\": \"2024-09-30T22:00:00.000Z\",\n        \"location\": \"Gjilan\",\n        \"description\": \"An evening of spoken word and poetry readings.\",\n        \"availableSeats\": 3,\n        \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n        \"image\": \"http://localhost:3000/uploads/1705780666200--MICP-Prime-web-finale.png\",\n        \"createdAt\": \"2024-01-20T19:57:46.223Z\",\n        \"updatedAt\": \"2024-01-20T20:09:00.370Z\"\n    },\n    {\n        \"id\": 20,\n        \"name\": \"Power Up\",\n        \"startTime\": \"2024-09-30T17:30:00.000Z\",\n        \"endTime\": \"2024-09-30T20:00:00.000Z\",\n        \"location\": \"Prizren\",\n        \"description\": \"An evening of spoken word and poetry readings.\",\n        \"availableSeats\": 4,\n        \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n        \"image\": \"http://localhost:3000/uploads/1705796786910--MICP-Prime-web-finale.png\",\n        \"createdAt\": \"2024-01-21T00:26:27.028Z\",\n        \"updatedAt\": \"2024-01-21T00:26:27.028Z\"\n    },\n    {\n        \"id\": 22,\n        \"name\": \"Power Up\",\n        \"startTime\": \"2024-09-30T17:30:00.000Z\",\n        \"endTime\": \"2024-09-30T20:00:00.000Z\",\n        \"location\": \"Prizren\",\n        \"description\": \"An evening of spoken word and poetry readings.\",\n        \"availableSeats\": 4,\n        \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n        \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1705849193/ems/mqt5wscv54zv2jfp5fue.png\",\n        \"createdAt\": \"2024-01-21T14:59:54.971Z\",\n        \"updatedAt\": \"2024-01-21T14:59:54.971Z\"\n    },\n    {\n        \"id\": 23,\n        \"name\": \"Power Up\",\n        \"startTime\": \"2024-09-30T17:30:00.000Z\",\n        \"endTime\": \"2024-09-30T20:00:00.000Z\",\n        \"location\": \"Prizren\",\n        \"description\": \"An evening of spoken word and poetry readings.\",\n        \"availableSeats\": 4,\n        \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n        \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1705850414/ems/cmb2dbmh05djudizhhcy.jpg\",\n        \"createdAt\": \"2024-01-21T15:20:15.964Z\",\n        \"updatedAt\": \"2024-01-21T15:20:15.964Z\"\n    },\n    {\n        \"id\": 24,\n        \"name\": \"Event Edit 13 edit\",\n        \"startTime\": \"2024-09-30T19:30:00.000Z\",\n        \"endTime\": \"2024-09-30T22:00:00.000Z\",\n        \"location\": \"Cozy Bookstore Lounge\",\n        \"description\": \"An evening of spoken word and poetry readings.\",\n        \"availableSeats\": 14,\n        \"registrationDeadline\": \"2026-09-15T23:59:59.000Z\",\n        \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1705861220/ems/vvw5serzt9jynpxyjq0q.jpg\",\n        \"createdAt\": \"2024-01-21T15:22:36.011Z\",\n        \"updatedAt\": \"2024-01-21T18:34:56.830Z\"\n    },\n    {\n        \"id\": 25,\n        \"name\": \"Power Up\",\n        \"startTime\": \"2024-09-30T17:30:00.000Z\",\n        \"endTime\": \"2024-09-30T20:00:00.000Z\",\n        \"location\": \"Prizren\",\n        \"description\": \"An evening of spoken word and poetry readings.\",\n        \"availableSeats\": 3,\n        \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n        \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1705853632/ems/qeau5jxgkuz3itjhj9m4.png\",\n        \"createdAt\": \"2024-01-21T16:13:53.705Z\",\n        \"updatedAt\": \"2024-01-22T14:52:57.533Z\"\n    },\n    {\n        \"id\": 26,\n        \"name\": \"Mother Day\",\n        \"startTime\": \"2024-09-30T17:30:00.000Z\",\n        \"endTime\": \"2024-09-30T20:00:00.000Z\",\n        \"location\": \"Prizren\",\n        \"description\": \"An evening for mothers.\",\n        \"availableSeats\": 46,\n        \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n        \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1705860893/ems/hwecdmsvkuqncbeu9j76.jpg\",\n        \"createdAt\": \"2024-01-21T18:14:54.683Z\",\n        \"updatedAt\": \"2024-01-22T14:44:38.122Z\"\n    },\n    {\n        \"id\": 27,\n        \"name\": \"Mother Day\",\n        \"startTime\": \"2024-09-30T17:30:00.000Z\",\n        \"endTime\": \"2024-09-30T20:00:00.000Z\",\n        \"location\": \"Prizren\",\n        \"description\": \"An evening for mothers.\",\n        \"availableSeats\": 50,\n        \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n        \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1705934904/ems/oirqq5vdtchtorjv6vau.jpg\",\n        \"createdAt\": \"2024-01-22T14:48:27.209Z\",\n        \"updatedAt\": \"2024-01-22T14:48:27.209Z\"\n    },\n    {\n        \"id\": 28,\n        \"name\": \"Mother Day\",\n        \"startTime\": \"2024-09-30T17:30:00.000Z\",\n        \"endTime\": \"2024-09-30T20:00:00.000Z\",\n        \"location\": \"Prizren\",\n        \"description\": \"An evening for mothers.\",\n        \"availableSeats\": 50,\n        \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n        \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1705934958/ems/vdeklnune6iwvgvhfmrd.png\",\n        \"createdAt\": \"2024-01-22T14:49:21.072Z\",\n        \"updatedAt\": \"2024-01-22T14:49:21.072Z\"\n    },\n    {\n        \"id\": 29,\n        \"name\": \"Poetry Day 3\",\n        \"startTime\": \"2025-09-30T17:30:00.000Z\",\n        \"endTime\": \"2024-09-30T20:00:00.000Z\",\n        \"location\": \"Prizren\",\n        \"description\": \"An evening for mothers.\",\n        \"availableSeats\": 70,\n        \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n        \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1706114581/ems/r7gwcmr2po5yacswhea9.jpg\",\n        \"createdAt\": \"2024-01-24T16:43:01.963Z\",\n        \"updatedAt\": \"2024-01-24T16:43:01.963Z\"\n    },\n    {\n        \"id\": 30,\n        \"name\": \"Poetry Day 3\",\n        \"startTime\": \"2025-09-30T17:30:00.000Z\",\n        \"endTime\": \"2024-09-30T20:00:00.000Z\",\n        \"location\": \"Prizren\",\n        \"description\": \"An evening for mothers.\",\n        \"availableSeats\": 69,\n        \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n        \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1706116678/ems/ouslwwagjtdxwtazdqm8.jpg\",\n        \"createdAt\": \"2024-01-24T17:17:59.101Z\",\n        \"updatedAt\": \"2024-01-24T17:19:27.155Z\"\n    },\n    {\n        \"id\": 31,\n        \"name\": \"Poetry Day 3\",\n        \"startTime\": \"2025-09-30T17:30:00.000Z\",\n        \"endTime\": \"2024-09-30T20:00:00.000Z\",\n        \"location\": \"Prizren\",\n        \"description\": \"An evening for mothers.\",\n        \"availableSeats\": 70,\n        \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n        \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1706134056/ems/hti9ql3t5zndrk0p0qhy.jpg\",\n        \"createdAt\": \"2024-01-24T22:07:37.319Z\",\n        \"updatedAt\": \"2024-01-24T22:07:37.319Z\"\n    },\n    {\n        \"id\": 32,\n        \"name\": \"Poetry Day 3\",\n        \"startTime\": \"2025-09-30T17:30:00.000Z\",\n        \"endTime\": \"2024-09-30T20:00:00.000Z\",\n        \"location\": \"Prizren\",\n        \"description\": \"An evening for mothers.\",\n        \"availableSeats\": 70,\n        \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n        \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1706209820/ems/afudwjet1in8bsguu1h7.jpg\",\n        \"createdAt\": \"2024-01-25T19:10:22.093Z\",\n        \"updatedAt\": \"2024-01-25T19:10:22.093Z\"\n    }\n]"
+						}
+					]
 				},
 				{
-					"name": "getEventsById",
+					"name": "getEventById",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/event/1",
-							"protocol": "http",
+							"raw": "{{url}}/event/26",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"event",
-								"1"
+								"26"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getEventByIdExample",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/event/26",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"event",
+										"26"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "756"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f4-yphQ8XCVhpxKPGDErXxl4OzhOYc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Jan 2024 19:16:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 26,\n    \"name\": \"Mother Day\",\n    \"startTime\": \"2024-09-30T17:30:00.000Z\",\n    \"endTime\": \"2024-09-30T20:00:00.000Z\",\n    \"location\": \"Prizren\",\n    \"description\": \"An evening for mothers.\",\n    \"availableSeats\": 46,\n    \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n    \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1705860893/ems/hwecdmsvkuqncbeu9j76.jpg\",\n    \"createdAt\": \"2024-01-21T18:14:54.683Z\",\n    \"updatedAt\": \"2024-01-22T14:44:38.122Z\",\n    \"participants\": [\n        {\n            \"id\": 22,\n            \"email\": \"ibadetegashi15@gmail.com\",\n            \"firstname\": \"Ibadete\",\n            \"lastname\": \"Gashi\",\n            \"createdAt\": \"2024-01-20T19:02:54.195Z\",\n            \"updatedAt\": \"2024-01-21T18:23:42.284Z\"\n        },\n        {\n            \"id\": 26,\n            \"email\": \"ibadetja69@gmail.com\",\n            \"firstname\": \"Ibadete\",\n            \"lastname\": \"Gashi\",\n            \"createdAt\": \"2024-01-21T18:22:27.945Z\",\n            \"updatedAt\": \"2024-01-21T18:22:27.945Z\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "editEvent",
@@ -155,7 +412,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Mother Day edit",
+									"value": "Father Day edit",
 									"type": "text"
 								},
 								{
@@ -180,7 +437,7 @@
 								},
 								{
 									"key": "availableSeats",
-									"value": "14",
+									"value": "15",
 									"type": "text"
 								},
 								{
@@ -196,19 +453,115 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/event/2",
-							"protocol": "http",
+							"raw": "{{url}}/event/26",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"event",
-								"2"
+								"26"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "editEventExample",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Father Day edit",
+											"type": "text"
+										},
+										{
+											"key": "startTime",
+											"value": "2024-09-30T19:30:00Z",
+											"type": "text"
+										},
+										{
+											"key": "endTime",
+											"value": "2024-09-30T22:00:00Z",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "Cozy Bookstore Lounge",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "An evening of spoken word and poetry readings.",
+											"type": "text"
+										},
+										{
+											"key": "availableSeats",
+											"value": "15",
+											"type": "text"
+										},
+										{
+											"key": "registrationDeadline",
+											"value": "2026-09-15T23:59:59Z",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/event/26",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"event",
+										"26"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "457"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c9-qaMXGGnGLAHK0fGENVYaG7aVq1g\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Jan 2024 19:19:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 26,\n    \"name\": \"Father Day edit\",\n    \"startTime\": \"2024-09-30T19:30:00.000Z\",\n    \"endTime\": \"2024-09-30T22:00:00.000Z\",\n    \"location\": \"Cozy Bookstore Lounge\",\n    \"description\": \"An evening of spoken word and poetry readings.\",\n    \"availableSeats\": 15,\n    \"registrationDeadline\": \"2026-09-15T23:59:59.000Z\",\n    \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1705860893/ems/hwecdmsvkuqncbeu9j76.jpg\",\n    \"createdAt\": \"2024-01-21T18:14:54.683Z\",\n    \"updatedAt\": \"2024-01-25T19:19:16.348Z\"\n}"
+						}
+					]
 				},
 				{
 					"name": "getEventsByParticipant",
@@ -216,12 +569,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/event/participant/22",
-							"protocol": "http",
+							"raw": "{{url}}/event/participant/22",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"event",
 								"participant",
@@ -229,7 +580,61 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getEventsByParticipantExampleResponse",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/event/participant/22",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"event",
+										"participant",
+										"22"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "869"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"365-9222vzr5i2hRXVYLlMT3smKcxxc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Jan 2024 19:21:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 16,\n        \"name\": \"Music Festival\",\n        \"startTime\": \"2024-09-30T19:30:00.000Z\",\n        \"endTime\": \"2024-09-30T22:00:00.000Z\",\n        \"location\": \"Gjakova\",\n        \"description\": \"An evening of spoken word and poetry readings.\",\n        \"availableSeats\": 3,\n        \"registrationDeadline\": \"2025-09-15T23:59:59.000Z\",\n        \"image\": \"http://localhost:3000/uploads/1705773403589--orderPage.png\",\n        \"createdAt\": \"2024-01-20T17:56:43.699Z\",\n        \"updatedAt\": \"2024-01-20T20:12:31.613Z\"\n    },\n    {\n        \"id\": 26,\n        \"name\": \"Father Day edit\",\n        \"startTime\": \"2024-09-30T19:30:00.000Z\",\n        \"endTime\": \"2024-09-30T22:00:00.000Z\",\n        \"location\": \"Cozy Bookstore Lounge\",\n        \"description\": \"An evening of spoken word and poetry readings.\",\n        \"availableSeats\": 15,\n        \"registrationDeadline\": \"2026-09-15T23:59:59.000Z\",\n        \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1705860893/ems/hwecdmsvkuqncbeu9j76.jpg\",\n        \"createdAt\": \"2024-01-21T18:14:54.683Z\",\n        \"updatedAt\": \"2024-01-25T19:19:16.348Z\"\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "searchEvent",
@@ -237,12 +642,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/event/search?name=y&location=Prizren&date=2025-09-30",
-							"protocol": "http",
+							"raw": "{{url}}/event/search?name=y&location=Prizren&date=2025-09-30",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"event",
 								"search"
@@ -263,7 +666,74 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "searchEventExampleResponse",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/event/search?name=y&location=Prizren&date=2025-09-30",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"event",
+										"search"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "y"
+										},
+										{
+											"key": "location",
+											"value": "Prizren"
+										},
+										{
+											"key": "date",
+											"value": "2025-09-30"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1255"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e7-UO0WLrRi3q4oChyLS13003RsIxc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Jan 2024 19:22:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 29,\n        \"name\": \"Poetry Day 3\",\n        \"startTime\": \"2025-09-30T17:30:00.000Z\",\n        \"endTime\": \"2024-09-30T20:00:00.000Z\",\n        \"location\": \"Prizren\",\n        \"description\": \"An evening for mothers.\",\n        \"availableSeats\": 70,\n        \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n        \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1706114581/ems/r7gwcmr2po5yacswhea9.jpg\",\n        \"createdAt\": \"2024-01-24T16:43:01.963Z\",\n        \"updatedAt\": \"2024-01-24T16:43:01.963Z\"\n    },\n    {\n        \"id\": 31,\n        \"name\": \"Poetry Day 3\",\n        \"startTime\": \"2025-09-30T17:30:00.000Z\",\n        \"endTime\": \"2024-09-30T20:00:00.000Z\",\n        \"location\": \"Prizren\",\n        \"description\": \"An evening for mothers.\",\n        \"availableSeats\": 70,\n        \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n        \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1706134056/ems/hti9ql3t5zndrk0p0qhy.jpg\",\n        \"createdAt\": \"2024-01-24T22:07:37.319Z\",\n        \"updatedAt\": \"2024-01-24T22:07:37.319Z\"\n    },\n    {\n        \"id\": 32,\n        \"name\": \"Poetry Day 3\",\n        \"startTime\": \"2025-09-30T17:30:00.000Z\",\n        \"endTime\": \"2024-09-30T20:00:00.000Z\",\n        \"location\": \"Prizren\",\n        \"description\": \"An evening for mothers.\",\n        \"availableSeats\": 70,\n        \"registrationDeadline\": \"2024-10-30T21:00:00.000Z\",\n        \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1706209820/ems/afudwjet1in8bsguu1h7.jpg\",\n        \"createdAt\": \"2024-01-25T19:10:22.093Z\",\n        \"updatedAt\": \"2024-01-25T19:10:22.093Z\"\n    }\n]"
+						}
+					]
 				}
 			]
 		},
@@ -277,7 +747,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"firstname\": \"Ibadete\",\r\n  \"lastname\": \"Gashi\",\r\n  \"email\": \"ig47496@bt-uni.net\",\r\n  \"eventId\": 3\r\n}\r\n",
+							"raw": "{\r\n  \"firstname\": \"Ibadete\",\r\n  \"lastname\": \"Gashi\",\r\n  \"email\": \"eis@maken.com\",\r\n  \"eventId\": 30\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -285,18 +755,77 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/participant",
-							"protocol": "http",
+							"raw": "{{url}}/participant",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"participant"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "registerParticipantExampleResponse",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstname\": \"Ibadete\",\r\n  \"lastname\": \"Gashi\",\r\n  \"email\": \"eis@maken.com\",\r\n  \"eventId\": 30\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/participant",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"participant"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "654"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28e-Ex/Ri2/26Ejg9O7h474/N2dTcaQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Jan 2024 19:23:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"participant\": {\n        \"id\": 28,\n        \"email\": \"eis@maken.com\",\n        \"firstname\": \"Ibadete\",\n        \"lastname\": \"Gashi\",\n        \"createdAt\": \"2024-01-25T19:23:02.579Z\",\n        \"updatedAt\": \"2024-01-25T19:23:02.579Z\"\n    },\n    \"eventToParticipateUpdated\": {\n        \"id\": 30,\n        \"name\": \"Mother Day edit\",\n        \"startTime\": \"2024-09-30T19:30:00.000Z\",\n        \"endTime\": \"2024-09-30T22:00:00.000Z\",\n        \"location\": \"Cozy Bookstore Lounge\",\n        \"description\": \"An evening of spoken word and poetry readings.\",\n        \"availableSeats\": 14,\n        \"registrationDeadline\": \"2026-09-15T23:59:59.000Z\",\n        \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1706116678/ems/ouslwwagjtdxwtazdqm8.jpg\",\n        \"createdAt\": \"2024-01-24T17:17:59.101Z\",\n        \"updatedAt\": \"2024-01-25T19:23:02.594Z\"\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "getAllParticipants",
@@ -304,18 +833,68 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/participant",
-							"protocol": "http",
+							"raw": "{{url}}/participant",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"participant"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getAllParticipantsExampleResponse",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/participant",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"participant"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "478"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1de-uH5PhuicxVSa1UxHBsuv4Pqp7YQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Jan 2024 19:23:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 22,\n        \"email\": \"ibadetegashi15@gmail.com\",\n        \"firstname\": \"Ibadete\",\n        \"lastname\": \"Gashi\",\n        \"createdAt\": \"2024-01-20T19:02:54.195Z\",\n        \"updatedAt\": \"2024-01-21T18:23:42.284Z\"\n    },\n    {\n        \"id\": 26,\n        \"email\": \"ibadetja69@gmail.com\",\n        \"firstname\": \"Ibadete\",\n        \"lastname\": \"Gashi\",\n        \"createdAt\": \"2024-01-21T18:22:27.945Z\",\n        \"updatedAt\": \"2024-01-21T18:22:27.945Z\"\n    },\n    {\n        \"id\": 28,\n        \"email\": \"eis@maken.com\",\n        \"firstname\": \"Ibadete\",\n        \"lastname\": \"Gashi\",\n        \"createdAt\": \"2024-01-25T19:23:02.579Z\",\n        \"updatedAt\": \"2024-01-25T19:23:02.579Z\"\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "getParticipantById",
@@ -323,19 +902,70 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/participant/3",
-							"protocol": "http",
+							"raw": "{{url}}/participant/22",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"participant",
-								"3"
+								"22"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getParticipantByIdExampleResponse",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/participant/22",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"participant",
+										"22"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1042"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"412-shTkl2TYqjA1JidPfTLAUU6NBhk\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Jan 2024 19:24:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 22,\n    \"email\": \"ibadetegashi15@gmail.com\",\n    \"firstname\": \"Ibadete\",\n    \"lastname\": \"Gashi\",\n    \"createdAt\": \"2024-01-20T19:02:54.195Z\",\n    \"updatedAt\": \"2024-01-21T18:23:42.284Z\",\n    \"events\": [\n        {\n            \"id\": 16,\n            \"name\": \"Music Festival\",\n            \"startTime\": \"2024-09-30T19:30:00.000Z\",\n            \"endTime\": \"2024-09-30T22:00:00.000Z\",\n            \"location\": \"Gjakova\",\n            \"description\": \"An evening of spoken word and poetry readings.\",\n            \"availableSeats\": 3,\n            \"registrationDeadline\": \"2025-09-15T23:59:59.000Z\",\n            \"image\": \"http://localhost:3000/uploads/1705773403589--orderPage.png\",\n            \"createdAt\": \"2024-01-20T17:56:43.699Z\",\n            \"updatedAt\": \"2024-01-20T20:12:31.613Z\"\n        },\n        {\n            \"id\": 26,\n            \"name\": \"Father Day edit\",\n            \"startTime\": \"2024-09-30T19:30:00.000Z\",\n            \"endTime\": \"2024-09-30T22:00:00.000Z\",\n            \"location\": \"Cozy Bookstore Lounge\",\n            \"description\": \"An evening of spoken word and poetry readings.\",\n            \"availableSeats\": 15,\n            \"registrationDeadline\": \"2026-09-15T23:59:59.000Z\",\n            \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1705860893/ems/hwecdmsvkuqncbeu9j76.jpg\",\n            \"createdAt\": \"2024-01-21T18:14:54.683Z\",\n            \"updatedAt\": \"2024-01-25T19:19:16.348Z\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "editParticipant",
@@ -344,7 +974,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"firstname\": \"Ibadete\",\r\n  \"lastname\": \"Gashi\"\r\n \r\n}",
+							"raw": "{\r\n   \"firstname\": \"Ibadete Edit\",\r\n  \"lastname\": \"Gashi\"\r\n \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -352,19 +982,79 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/participant/1",
-							"protocol": "http",
+							"raw": "{{url}}/participant/22",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"participant",
-								"1"
+								"22"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "editParticipantExampleResponse",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"firstname\": \"Ibadete Edit\",\r\n  \"lastname\": \"Gashi\"\r\n \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/participant/22",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"participant",
+										"22"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "168"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a8-h7v5vsW38G7kKa8G3znr28sUHDU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Jan 2024 19:25:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 22,\n    \"email\": \"ibadetegashi15@gmail.com\",\n    \"firstname\": \"Ibadete Edit\",\n    \"lastname\": \"Gashi\",\n    \"createdAt\": \"2024-01-20T19:02:54.195Z\",\n    \"updatedAt\": \"2024-01-25T19:25:50.795Z\"\n}"
+						}
+					]
 				},
 				{
 					"name": "deleteParticipant",
@@ -372,19 +1062,70 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/participant/1",
-							"protocol": "http",
+							"raw": "{{url}}/participant/28",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"participant",
-								"1"
+								"28"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "deleteParticipantExampleResponse",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/participant/28",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"participant",
+										"28"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "152"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"98-tSBA/X/ljjN6pmBXkhZeswGKedU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Jan 2024 19:27:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 28,\n    \"email\": \"eis@maken.com\",\n    \"firstname\": \"Ibadete\",\n    \"lastname\": \"Gashi\",\n    \"createdAt\": \"2024-01-25T19:23:02.579Z\",\n    \"updatedAt\": \"2024-01-25T19:23:02.579Z\"\n}"
+						}
+					]
 				},
 				{
 					"name": "getParticipantsByEvent",
@@ -392,20 +1133,72 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/participant/event/3",
-							"protocol": "http",
+							"raw": "{{url}}/participant/event/26",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"participant",
 								"event",
-								"3"
+								"26"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getParticipantsByEventExampleResponse",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/participant/event/26",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"participant",
+										"event",
+										"26"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "330"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14a-AqepyZAgBRXGwBj9ZsWEE4tq3u4\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Jan 2024 19:28:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 22,\n        \"email\": \"ibadetegashi15@gmail.com\",\n        \"firstname\": \"Ibadete Edit\",\n        \"lastname\": \"Gashi\",\n        \"createdAt\": \"2024-01-20T19:02:54.195Z\",\n        \"updatedAt\": \"2024-01-25T19:25:50.795Z\"\n    },\n    {\n        \"id\": 26,\n        \"email\": \"ibadetja69@gmail.com\",\n        \"firstname\": \"Ibadete\",\n        \"lastname\": \"Gashi\",\n        \"createdAt\": \"2024-01-21T18:22:27.945Z\",\n        \"updatedAt\": \"2024-01-21T18:22:27.945Z\"\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "removeParticipantFromEvent",
@@ -414,7 +1207,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"eventId\":2\r\n}",
+							"raw": "{\r\n    \"eventId\":30\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -422,20 +1215,81 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/participant/remove/3",
-							"protocol": "http",
+							"raw": "{{url}}/participant/remove/31",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"participant",
 								"remove",
-								"3"
+								"31"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "removeParticipantFromEventExampleResponse",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"eventId\":30\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/participant/remove/31",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"participant",
+										"remove",
+										"31"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "626"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"272-XRvt1dHBygj6E4jR7rKyHHnXhpc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Jan 2024 19:36:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 30,\n    \"name\": \"Mother Day edit\",\n    \"startTime\": \"2024-09-30T19:30:00.000Z\",\n    \"endTime\": \"2024-09-30T22:00:00.000Z\",\n    \"location\": \"Cozy Bookstore Lounge\",\n    \"description\": \"An evening of spoken word and poetry readings.\",\n    \"availableSeats\": 11,\n    \"registrationDeadline\": \"2026-09-15T23:59:59.000Z\",\n    \"image\": \"https://res.cloudinary.com/dwdbudfdi/image/upload/v1706116678/ems/ouslwwagjtdxwtazdqm8.jpg\",\n    \"createdAt\": \"2024-01-24T17:17:59.101Z\",\n    \"updatedAt\": \"2024-01-25T19:35:20.510Z\",\n    \"participants\": [\n        {\n            \"id\": 30,\n            \"email\": \"1s@maken.com\",\n            \"firstname\": \"Ibadete\",\n            \"lastname\": \"Gashi\",\n            \"createdAt\": \"2024-01-25T19:35:08.626Z\",\n            \"updatedAt\": \"2024-01-25T19:35:08.626Z\"\n        }\n    ]\n}"
+						}
+					]
 				}
 			]
 		}

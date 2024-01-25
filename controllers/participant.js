@@ -2,6 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 const sendEmailConfirm = require("../utils/sendEmailConfirm");
+const sendEmailRemoved = require("../utils/sendEmailRemoved");
 
 const participantRegister = async (req, res) => {
   try {
@@ -79,15 +80,15 @@ const participantRegister = async (req, res) => {
   }
 };
 
-// all participants from all events
+// GET all participants from all events
 const getAllParticipants = async (req, res) => {
   try {
-    const participants = await prisma.participant.findMany({
-      include: { events: true },
-    });
+    const participants = await prisma.participant.findMany();
+
     if (!participants || participants.length === 0) {
       return res.status(404).send({ message: "There are no registered participants" });
     }
+
     return res.status(200).send(participants);
   } catch (error) {
     console.log(error);
@@ -95,6 +96,7 @@ const getAllParticipants = async (req, res) => {
   }
 };
 
+//get paprticipant with his events
 const getParticipantById = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
@@ -117,25 +119,23 @@ const getParticipantById = async (req, res) => {
 const getParticipantsByEvent = async (req, res) => {
   try {
     const eventId = parseInt(req.params.eventId);
+
     const findEvent = await prisma.event.findUnique({
       where: { id: eventId },
+      include: {
+        participants: true,
+      }
     });
+
     if (!findEvent) {
       return res.status(404).json({ message: "This event does not exist." });
     }
 
-    const participants = await prisma.participant.findMany({
-      where: {
-        events: {
-          some: { id: eventId },
-        },
-      },
-    });
-    if (!participants || participants.length === 0) {
+    if (!findEvent.participants || findEvent.participants.length === 0) {
       return res.status(404).send({ message: "No one is registered for this event " });
     }
 
-    return res.status(200).send(participants);
+    return res.status(200).send(findEvent.participants);
   } catch (error) {
     console.log(error);
     return res.status(500).send("Internal Server Error");
@@ -145,9 +145,11 @@ const getParticipantsByEvent = async (req, res) => {
 const editParticipant = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
+
     const findParticipant = await prisma.participant.findUnique({
       where: { id },
     });
+
     if (!findParticipant) {
       return res.status(404).send({ message: "The participant does not exists" });
     }
@@ -156,6 +158,7 @@ const editParticipant = async (req, res) => {
       where: { id },
       data: req.body,
     });
+
     if (!updateParticipant) {
       return res.status(400).send({ error: "Failed to update this participant" });
     }
@@ -166,9 +169,11 @@ const editParticipant = async (req, res) => {
   }
 };
 
+
 const deleteParticipant = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
+
     const findParticipant = await prisma.participant.findUnique({
       where: { id },
     });
@@ -185,9 +190,7 @@ const deleteParticipant = async (req, res) => {
       return res.status(400).send({ error: "Failed to delete the participant" });
     }
 
-    const otherParticipant = await prisma.participant.findMany();
-
-    return res.status(200).send({ deleteParticipant, otherParticipant });
+    return res.status(200).send(deleteParticipant);
   } catch (error) {
     console.log(error);
     return res.status(500).send("Internal Server Error");
@@ -207,45 +210,41 @@ const removeParticipantFromSpecificEvent = async (req, res) => {
       return res.status(404).send({ message: "The Event not found." });
     }
     //check if participant exists in this event
-    const findParticipant = await prisma.participant.findUnique({
-      where: {
-        id: participantId,
-        events: {
-            some: {
-              id: eventId
-            },
-        },
-      },
-    });
+    const existParticipant = findEvent.participants
+      .find(participant => participant.id === participantId)
 
-    if (!findParticipant) {
+    if (!existParticipant) {
       return res.status(404).send({ message: "The Participant not found" });
     }
-    
+
     //disconnect that participant from that event
     const updateEvent = await prisma.event.update({
       where: { id: eventId },
       data: {
         participants: { disconnect: { id: participantId } },
+        availableSeats: {
+          increment: 1
+        }
       },
       include: {
         participants: true,
       },
     });
-
     //delete that participant if it has no other events (if so, after disconnect has 0 events)
     const participant = await prisma.participant.findUnique({
       where: { id: participantId },
       include: {
-        events:true
+        events: true
       }
     });
 
-    console.log('participan after disconnect', participant);
 
-    if (participant.events.length === 0) { 
+    console.log('participant after disconnect', participant);
+    sendEmailRemoved(participant, findEvent)
+    
+    if (participant.events.length === 0) {
       await prisma.participant.delete({
-        where:{id: participantId}
+        where: { id: participantId }
       })
     }
 

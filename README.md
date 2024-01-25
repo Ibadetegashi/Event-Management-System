@@ -2,7 +2,9 @@
 
 ## Description
 
-    This is an Event Management System designed to streamline the process of creating, managing, and participating in events. The system enables users to create events, register for events, and view event details along with a list of registered participants.
+This is an event management system designed to simplify the process of creating, managing and participating in events. The system allows users to create events, register for events and view event details along with a list of registered attendees. The user will be notified by email when he registers in an event or when he wants to leave an event.
+
+ 
 
 ## Table of Contents
 
@@ -22,7 +24,7 @@
    git clone https://github.com/Ibadetegashi/Event-Management-System.git
 
 2. Install dependencies:
-   npm install
+   `npm install`
 
 # Configuration
 1. Create a .env file in the project root.
@@ -46,17 +48,17 @@ If you prefer not to use Cloudinary and want to use local file upload, follow th
 1. DATABASE_URL="mysql://username:password@localhost:3306/database_name"
 Replace username, password, localhost, 3306, and database_name with your actual database credentials and configuration.
 2. Apply Migrations:
-npx prisma migrate dev
+`npx prisma migrate dev`
 This command will execute the migrations defined in the prisma/migrations folder. It sets up the database schema based on the changes specified in each migration file.
 3. Generate Prisma Client:
-npx prisma generate
+`npx prisma generate`
 This command generates the Prisma Client based on the schema.prisma file.
 
 
 # Usage
 To start the application, run:
-- npm start
-- Access the application at http://localhost:PORT, where PORT is specified in server.js.
+- `npm start` 
+- Access the application at `http://localhost:PORT` , where PORT is specified in server.js.
  
  
 # API Documentation
@@ -88,4 +90,5 @@ To start the application, run:
 
 
 # LICENSE
-This project is licensed under the MIT License.
+
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/Ibadetegashi/Event-Management-System?tab=MIT-1-ov-file) file for details.

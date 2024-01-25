@@ -19,10 +19,8 @@ const createEvent = async (req, res) => {
         ...otherData,
         image: imageUrl,
       },
-      include: {
-        participants: true,
-      },
     });
+
     if (!event) {
       return res.status(400).send({ error: 'Could not create the event' });
     }
@@ -35,16 +33,18 @@ const createEvent = async (req, res) => {
 };
 
 const editEvent = async (req, res) => {
-  const id = parseInt(req.params.id);
   try {
+
+    const id = parseInt(req.params.id);
+    const { availableSeats, ...otherData } = req.body;
+
     const findEvent = await prisma.event.findUnique({
       where: { id },
     });
+
     if (!findEvent) {
       return res.status(404).json({ message: 'Event not found' });
     }
-
-    const { availableSeats, ...otherData } = req.body;
 
     const image = req.file
       ? req.cloudinaryUrl
@@ -52,7 +52,6 @@ const editEvent = async (req, res) => {
 
     const event = await prisma.event.update({
       where: { id },
-      include: { participants: true },
       data: {
         ...otherData,
         image,
@@ -110,13 +109,7 @@ const deleteEvent = async (req, res) => {
       }
     }
 
-    const otherEvents = await prisma.event.findMany({
-      include: {
-        participants: true,
-      },
-    });
-
-    return res.status(200).send({ deleteEvent, otherEvents });
+    return res.status(200).send({ deleteEvent });
   } catch (error) {
     console.log(error);
     return res.status(500).send('Internal Server Error');
@@ -125,11 +118,7 @@ const deleteEvent = async (req, res) => {
 
 const getAllEvents = async (req, res) => {
   try {
-    const events = await prisma.event.findMany({
-      include: {
-        participants: true,
-      },
-    });
+    const events = await prisma.event.findMany();
     if (!events) {
       return res.status(404).send({ message: 'No Events Found' });
     }
@@ -163,20 +152,19 @@ const getEventsByParticipant = async (req, res) => {
   try {
     const participantId = parseInt(req.params.participantId);
 
-    const events = await prisma.event.findMany({
+    const participant = await prisma.participant.findUnique({
       where: {
-        participants: {
-          some: {
-            id: participantId,
-          },
-        },
+        id: participantId,
       },
+      include: {
+        events: true,
+      }
     });
-    if (!events || events.length === 0) {
+    if (!participant) {
       return res.status(404).send({ message: 'Participant not found' });
     }
 
-    return res.status(200).send(events);
+    return res.status(200).send(participant.events);
   } catch (error) {
     console.log(error);
     return res.status(500).send('Internal Server Error');
@@ -199,14 +187,20 @@ const searchEvent = async (req, res) => {
 
           date ? {
             AND: [
-              { startTime: { gte: new Date(`${date}T00:00:00Z`) } },
-              { startTime: { lte: new Date(`${date}T23:59:59Z`) } },
+              {
+                startTime:
+                  { gte: new Date(`${date}T00:00:00Z`) }
+              },
+              {
+                startTime:
+                  { lte: new Date(`${date}T23:59:59Z`) }
+              },
             ],
           } : {}
         ]
       }
     })
-    
+
     console.log(events);
     return res.status(200).send(events)
   } catch (error) {
