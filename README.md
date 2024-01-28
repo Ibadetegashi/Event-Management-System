@@ -41,7 +41,7 @@ This is an event management system designed to simplify the process of creating,
 If you prefer not to use Cloudinary and want to use local file upload, follow these steps:
 
 1. Open middlewares/upload.js and replace with uploads/Upload.txt
-2. Open controllers/event.js and replace with uploads/event.txt
+2. Open controllers/event.js and replace createEvent, editEvent with uploads/event.txt
 
 
 ## Prisma 

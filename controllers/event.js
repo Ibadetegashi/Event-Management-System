@@ -6,12 +6,11 @@ const createEvent = async (req, res) => {
   try {
 
     if (!req.file) {
-      return res.status(400).send({ error: 'Image is required' });
+      return res.status(400).json({ error: 'Image is required' });
     }
 
     const { availableSeats, ...otherData } = req.body;
     const imageUrl = req.cloudinaryUrl
-    console.log(req.cloudinaryUrl);
 
     const event = await prisma.event.create({
       data: {
@@ -22,10 +21,10 @@ const createEvent = async (req, res) => {
     });
 
     if (!event) {
-      return res.status(400).send({ error: 'Could not create the event' });
+      return res.status(400).json({ error: 'Could not create the event' });
     }
 
-    return res.status(201).send(event);
+    return res.status(201).json(event);
   } catch (error) {
     console.log(error);
     return res.status(500).send('Internal Server Error');
@@ -60,11 +59,9 @@ const editEvent = async (req, res) => {
     });
 
     if (!event) {
-      return res
-        .status(400)
-        .send({ error: 'Cannot find an Event with this id' });
+      return res.status(404).json({ message: 'Cannot find an Event with this id' });
     }
-    return res.status(200).send(event);
+    return res.status(200).json(event);
   } catch (error) {
     console.log(error);
     return res.status(500).send('Internal Server Error');
@@ -82,7 +79,7 @@ const deleteEvent = async (req, res) => {
       },
     });
     if (!findEvent) {
-      return res.status(404).send({ message: 'This event does not exist' });
+      return res.status(404).json({ message: 'This event does not exist' });
     }
 
     const deleteEvent = await prisma.event.delete({
@@ -96,7 +93,7 @@ const deleteEvent = async (req, res) => {
       },
     });
     if (!deleteEvent) {
-      return res.status(400).send({ error: 'Failed to delete the event' });
+      return res.status(400).json({ error: 'Failed to delete the event' });
     }
     for (const participant of deleteEvent.participants) {
       console.log(participant);
@@ -109,7 +106,7 @@ const deleteEvent = async (req, res) => {
       }
     }
 
-    return res.status(200).send({ deleteEvent });
+    return res.status(200).json(deleteEvent);
   } catch (error) {
     console.log(error);
     return res.status(500).send('Internal Server Error');
@@ -120,9 +117,9 @@ const getAllEvents = async (req, res) => {
   try {
     const events = await prisma.event.findMany();
     if (!events) {
-      return res.status(404).send({ message: 'No Events Found' });
+      return res.status(404).json({ message: 'No Events Found' });
     }
-    return res.status(200).send(events);
+    return res.status(200).json(events);
   } catch (error) {
     console.log(error);
     return res.status(500).send('Internal Server Error');
@@ -141,7 +138,7 @@ const getEventById = async (req, res) => {
     if (!event) {
       return res.status(404).json({ message: 'Event not found' });
     }
-    return res.status(200).send(event);
+    return res.status(200).json(event);
   } catch (error) {
     console.log(error);
     return res.status(500).send('Internal Server Error');
@@ -161,10 +158,10 @@ const getEventsByParticipant = async (req, res) => {
       }
     });
     if (!participant) {
-      return res.status(404).send({ message: 'Participant not found' });
+      return res.status(404).json({ message: 'Participant not found' });
     }
 
-    return res.status(200).send(participant.events);
+    return res.status(200).json(participant.events);
   } catch (error) {
     console.log(error);
     return res.status(500).send('Internal Server Error');
@@ -202,7 +199,7 @@ const searchEvent = async (req, res) => {
     })
 
     console.log(events);
-    return res.status(200).send(events)
+    return res.status(200).json(events)
   } catch (error) {
     console.log(error);
     return res.status(500).send('Internal Server Error');
